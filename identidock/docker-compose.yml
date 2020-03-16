@@ -1,0 +1,26 @@
+version: '3.3'
+services:
+  identidock:
+    build: .
+    ports:
+      - "5000:5000"
+      - "9000:9000"
+    environment:
+      ENV: DEV 
+    volumes:
+      - ./app:/app
+    networks:
+      identidock:
+
+  dnmonster:
+    image: amouat/dnmonster:1.0
+    networks:
+      identidock:
+
+  redis:
+    image: redis:3.0
+    networks:
+      identidock:
+
+networks:
+  identidock:
