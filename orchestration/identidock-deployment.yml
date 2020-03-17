@@ -1,0 +1,21 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: identidock
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: identidock-pod
+  template:
+      metadata:
+        labels:
+          name: identidock-pod
+      spec:
+        containers:
+        - image: kovtalex/identidock:1.0
+          name: identidock
+          env:
+            - name: ENV
+              value: PROD

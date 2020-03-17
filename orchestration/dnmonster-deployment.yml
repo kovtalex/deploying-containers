@@ -1,0 +1,19 @@
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dnmonster
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: dnmonster-pod
+  template:
+      metadata:
+        labels:
+          name: dnmonster-pod
+      spec:
+        containers:
+        - image: amouat/dnmonster:1.0
+          name: dnmonster
